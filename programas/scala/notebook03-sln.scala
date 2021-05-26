@@ -17,7 +17,7 @@ import scala.annotation.tailrec
 
 // Ejercicio 1
 
-def factorial(n:Int):Int = {
+def factorial(n:Int):Int = {<
   @tailrec
   def iFactorial(n:Int, a:Int):Int = n match {
     case 0 => a

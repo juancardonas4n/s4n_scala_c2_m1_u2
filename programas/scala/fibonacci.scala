@@ -18,6 +18,15 @@ def fibonacciRec(n:Int):Int = n match {
   case n => fibonacciRec(n-1)+fibonacciRec(n-2)
 }
 
+def fibRecCola(n:Int) = {
+  def iFibRecCola(n:Int,t:(Int,Int)):Int = n match {
+    case 0 => t._1
+    case 1 => t._2
+    case n => iFibRecCola(n-1,(t._2,t._1 + t._2))
+  }
+  iFibRecCola(n,(0,1))
+}
+
 def eval(n:Int):Unit =  {
   val timeRec = System.nanoTime
   fibonacciRec(n)
