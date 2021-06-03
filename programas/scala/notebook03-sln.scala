@@ -17,7 +17,7 @@ import scala.annotation.tailrec
 
 // Ejercicio 1
 
-def factorial(n:Int):Int = {<
+def factorial(n:Int):Int = {
   @tailrec
   def iFactorial(n:Int, a:Int):Int = n match {
     case 0 => a
@@ -86,4 +86,30 @@ def sumList(lst:List[Int]):Int = {
   iSumList(lst,0)
 }
 
+def sumList2(lst:List[Int]):Int = {
+  @tailrec
+  def iSumList(r:(List[Int],Int)):Int = {
+    if (r._1.isEmpty) r._2
+    else iSumList(r._1.tail,r._1.head + r._2)
+  }
+  iSumList((lst,0))
+}
+
+def sumList3(lst:List[Int]):Int = {
+  @tailrec
+  def iSumList(lst:List[Int],acum:Int):Int = lst match {
+    case Nil => acum
+    case _   => iSumList(lst.tail, lst.head + acum)
+  }
+  iSumList(lst,0)
+}
+
+def sumList4(lst:List[Int]):Int = {
+  @tailrec
+  def iSumList(lst:List[Int],acum:Int):Int = lst match {
+    case lst if lst.isEmpty => acum
+    case _   => iSumList(lst.tail, lst.head + acum)
+  }
+  iSumList(lst,0)
+}
 
